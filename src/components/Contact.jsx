@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { Box, Container, Typography, Grid, IconButton, Snackbar, Alert } from '@mui/material';
 import EmailIcon from '@mui/icons-material/Email';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import PhoneIcon from '@mui/icons-material/Phone';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CheckIcon from '@mui/icons-material/Check';
 import { motion } from 'framer-motion';
@@ -94,22 +92,6 @@ const contactItems = [
     value: 'piyush-gupta-96b254123',
     color: COLORS.secondary,
     href: profile.linkedin,
-    copyable: false,
-  },
-  {
-    icon: <PhoneIcon />,
-    label: 'Phone',
-    value: profile.phone,
-    color: COLORS.accent,
-    href: `tel:${profile.phone}`,
-    copyable: true,
-  },
-  {
-    icon: <LocationOnIcon />,
-    label: 'Location',
-    value: profile.location,
-    color: '#f59e0b',
-    href: null,
     copyable: false,
   },
 ];
