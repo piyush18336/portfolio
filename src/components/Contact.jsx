@@ -266,11 +266,10 @@ export default function Contact() {
                 letterSpacing: '0.08em',
               }}
             >
-              // built by{' '}
+              built by{' '}
               <Box component="span" sx={{ color: COLORS.primary }}>
                 Piyush Gupta
-              </Box>{' '}
-              with React + MUI · {new Date().getFullYear()}
+              </Box>
             </Typography>
           </Box>
         </motion.div>

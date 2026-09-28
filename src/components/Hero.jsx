@@ -9,6 +9,11 @@ import { keyframes } from '@emotion/react';
 import { COLORS } from '../theme';
 import { profile } from '../data/resume';
 
+// Drop your photo as src/assets/profile.jpg (or .png / .webp) to show it here.
+// If no file is found, the "PG" initials ring renders as fallback.
+const _photoGlob = import.meta.glob('../assets/profile.*', { eager: true });
+const profilePhoto = Object.values(_photoGlob)[0]?.default ?? null;
+
 const float = keyframes`
   0%, 100% { transform: translate(0, 0) scale(1); }
   33% { transform: translate(40px, -40px) scale(1.08); }
@@ -49,11 +54,11 @@ const GradientText = styled('span')({
 });
 
 const AvatarRing = styled(Box)({
-  width: 120,
-  height: 120,
+  width: 140,
+  height: 140,
   borderRadius: '50%',
   background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.secondary})`,
-  padding: 2,
+  padding: 3,
   animation: `${pulse} 3s ease-in-out infinite`,
   display: 'flex',
   alignItems: 'center',
@@ -62,9 +67,19 @@ const AvatarRing = styled(Box)({
     width: '100%',
     height: '100%',
     borderRadius: '50%',
+    overflow: 'hidden',
+    background: '#0a0a18',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  '& .inner img': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    borderRadius: '50%',
+  },
+  '& .initials': {
     fontSize: '2.5rem',
     fontFamily: '"Space Grotesk", sans-serif',
     fontWeight: 700,
@@ -146,7 +161,7 @@ function TypeWriter({ titles }) {
   );
 }
 
-const floatingTags = ['RAG', 'LangGraph', 'MCP', 'WebRTC', 'FastAPI', 'MuseTalk', 'LLMs'];
+const floatingTags = ['RAG', 'LangGraph', 'MCP', 'WebRTC', 'FastAPI', 'LLMs', 'Python', 'React', 'JavaScript', 'Git', 'Docker'];
 
 export default function Hero() {
   const scrollToAbout = () => {
@@ -188,7 +203,13 @@ export default function Hero() {
             transition={{ duration: 0.6, type: 'spring', stiffness: 100 }}
           >
             <AvatarRing>
-              <Box className="inner">PG</Box>
+              <Box className="inner">
+                {profilePhoto ? (
+                  <img src={profilePhoto} alt="Piyush Gupta" />
+                ) : (
+                  <Box className="initials">PG</Box>
+                )}
+              </Box>
             </AvatarRing>
           </motion.div>
 

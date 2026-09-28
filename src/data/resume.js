@@ -17,7 +17,7 @@ export const profile = {
 
 export const experience = [
   {
-    role: 'AI Engineer / Fullstack AI Engineer',
+    role: 'FullStack AI Engineer',
     company: 'WittyBrains Software Tech. Pvt. Ltd.',
     location: 'Noida, India',
     period: 'Jun 2022 – Present',
